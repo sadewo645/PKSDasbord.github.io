@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+main
 import DataTable from '../components/DataTable.jsx'
 import { useSheetData } from '../hooks/useSheetData.js'
 import { buildKeyDictionary, formatUpdatedAt, parseNumber, resolveKey } from '../utils/dataHelpers.js'
@@ -93,6 +94,7 @@ const Perkebunan = () => {
                 contentStyle={{ background: '#0f172a', borderRadius: 16, border: '1px solid rgba(148,163,184,0.2)', color: '#e2e8f0' }}
               />
               <Bar dataKey="hasil" fill="url(#perkebunanBar)" radius={[10, 10, 0, 0]} />
+main
             </BarChart>
           </ResponsiveContainer>
         </div>

@@ -28,12 +28,15 @@ const Layout = () => {
     <div className="flex min-h-screen bg-slate-950 text-slate-100">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex min-h-screen flex-1 flex-col">
+main
         <Navbar
           title={meta.title}
           description={meta.description}
           onToggleSidebar={() => setSidebarOpen((prev) => !prev)}
         />
+
         <main className="flex-1 px-4 pb-10 pt-[112px] transition-all md:pl-72 md:px-10 lg:px-14">
+main
           <div className="mx-auto w-full max-w-6xl space-y-8">
             <Outlet context={{ pageMeta: meta }} />
           </div>

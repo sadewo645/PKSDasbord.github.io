@@ -64,6 +64,7 @@ const Sidebar = ({ activePage, onChange }) => {
       </div>
     </aside>
 main
+main
   )
 }
 

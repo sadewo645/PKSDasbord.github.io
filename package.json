@@ -16,6 +16,7 @@
     "react-dom": "^18.2.0",
     "recharts": "^2.7.2",
     "clsx": "^2.1.0"
+main
   },
   "devDependencies": {
     "@types/react": "^18.2.20",
@@ -29,3 +30,4 @@
     "vite": "^5.0.0"
   }
 }
+main
