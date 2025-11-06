@@ -25,15 +25,18 @@ const Layout = () => {
   const meta = useMemo(() => routeMeta[location.pathname] ?? routeMeta['/perkebunan'], [location.pathname])
 
   return (
-    <div className="flex h-screen overflow-hidden bg-slate-950 text-slate-100">
+    <div className="flex min-h-screen bg-slate-950 text-slate-100">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      <div className="flex h-full flex-1 flex-col md:pl-72">
+      <div className="flex min-h-screen flex-1 flex-col">
+main
         <Navbar
           title={meta.title}
           description={meta.description}
           onToggleSidebar={() => setSidebarOpen((prev) => !prev)}
         />
-        <main className="flex-1 overflow-y-auto px-4 pb-10 pt-[112px] transition-all md:px-10 lg:px-14">
+
+        <main className="flex-1 px-4 pb-10 pt-[112px] transition-all md:pl-72 md:px-10 lg:px-14">
+main
           <div className="mx-auto w-full max-w-6xl space-y-8">
             <Outlet context={{ pageMeta: meta }} />
           </div>

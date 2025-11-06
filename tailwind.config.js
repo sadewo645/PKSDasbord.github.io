@@ -4,8 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary-start': '#a21caf',
-        'primary-end': '#2563eb',
+        'primary-start': '#7b2ff7',
+        'primary-end': '#f107a3',
+main
         'sidebar-bg': '#0f172a',
       },
       fontFamily: {
