@@ -1,77 +1,70 @@
-import { Building2, Factory, Leaf } from 'lucide-react'
-import { NavLink } from 'react-router-dom'
+import { Building2, Factory, Leaf, BookOpen } from 'lucide-react'
+import clsx from 'clsx'
 
-const navigation = [
+const menu = [
   {
-    to: '/perkebunan',
-    label: 'Perkebunan',
-    description: 'Hasil panen & kondisi kebun',
-    icon: Leaf,
+    title: 'DASHBOARD',
+    items: [
+      { key: 'perkebunan', label: 'Monitoring Perkebunan', icon: Leaf },
+      { key: 'pabrik', label: 'Monitoring Pabrik', icon: Factory },
+      { key: 'perusahaan', label: 'Monitoring Perusahaan', icon: Building2 },
+    ],
   },
   {
-    to: '/pabrik',
-    label: 'Pabrik',
-    description: 'Stasiun pengolahan & limbah',
-    icon: Factory,
-  },
-  {
-    to: '/perusahaan',
-    label: 'Perusahaan',
-    description: 'Produksi & kualitas CPO',
-    icon: Building2,
+    title: 'PANDUAN',
+    items: [{ key: 'guide', label: 'Panduan Budidaya', icon: BookOpen }],
   },
 ]
 
-const Sidebar = ({ isOpen, onClose }) => {
+const Sidebar = ({ activePage, onChange }) => {
   return (
-    <>
-      <div
-        className={`fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
-          isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
-        }`}
-        onClick={onClose}
-      />
-      <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col bg-slate-950/95 backdrop-blur-xl transition-transform duration-300 md:translate-x-0 ${
-          isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
-        }`}
-      >
-        <div className="px-6 pb-6 pt-10">
-          <div className="text-lg font-semibold tracking-wide text-white">Sawit Insight</div>
-          <p className="mt-1 text-sm text-slate-400">Dashboard terpadu budidaya kelapa sawit.</p>
-        </div>
-        <nav className="flex-1 space-y-1 overflow-y-auto px-4 pb-10">
-          {navigation.map((item) => {
-            const Icon = item.icon
-            return (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                onClick={onClose}
-                className={({ isActive }) =>
-                  `group relative mb-2 flex items-start gap-3 rounded-2xl border border-white/5 px-4 py-4 transition-all hover:border-white/20 hover:bg-white/5 ${
-                    isActive
-                      ? 'bg-gradient-to-r from-[#a21caf]/90 to-[#2563eb]/90 text-white shadow-lg shadow-[#2563eb]/20'
-                      : 'text-slate-300'
-                  }`
-                }
-              >
-                <span className="mt-1 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-[#a21caf] group-hover:bg-white/15">
-                  <Icon size={20} />
-                </span>
-                <span>
-                  <span className="block text-base font-semibold">{item.label}</span>
-                  <span className="text-sm text-slate-400 group-hover:text-slate-200">{item.description}</span>
-                </span>
-              </NavLink>
-            )
-          })}
-        </nav>
-        <div className="border-t border-white/5 px-6 py-6 text-xs text-slate-500">
-          © {new Date().getFullYear()} Sawit Insight. Semua hak dilindungi.
-        </div>
-      </aside>
-    </>
+    <aside className="hidden md:flex md:flex-col w-72 bg-sidebar-bg/95 text-slate-100 border-r border-white/5 backdrop-blur-lg">
+      <div className="px-6 py-8">
+        <div className="text-lg font-semibold tracking-wide text-white">Sawit Insight</div>
+        <p className="text-sm text-slate-400 mt-1">
+          Analitik real-time untuk budidaya kelapa sawit berkelanjutan.
+        </p>
+      </div>
+      <nav className="flex-1 px-4 space-y-8 overflow-y-auto pb-8">
+        {menu.map((section) => (
+          <div key={section.title}>
+            <h4 className="px-2 text-xs font-semibold uppercase tracking-widest text-slate-500">
+              {section.title}
+            </h4>
+            <ul className="mt-3 space-y-2">
+              {section.items.map((item) => {
+                const Icon = item.icon
+                const isActive = activePage === item.key || (activePage === 'dashboard' && item.key === 'perkebunan')
+
+                return (
+                  <li key={item.key}>
+                    <button
+                      onClick={() => onChange(item.key === 'guide' ? 'guide' : 'dashboard', item.key)}
+                      className={clsx(
+                        'flex w-full items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium transition-all',
+                        isActive
+                          ? 'bg-gradient-to-r from-primary-start/80 to-primary-end/80 text-white shadow-lg shadow-primary-start/30'
+                          : 'text-slate-300 hover:bg-white/5 hover:text-white'
+                      )}
+                    >
+                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 text-primary-start">
+                        <Icon size={18} />
+                      </span>
+                      {item.label}
+                    </button>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        ))}
+      </nav>
+      <div className="border-t border-white/5 px-6 py-6 text-xs text-slate-500">
+        © {new Date().getFullYear()} Sawit Insight. Semua hak dilindungi.
+      </div>
+    </aside>
+main
+main
   )
 }
 
