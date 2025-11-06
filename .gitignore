@@ -3,3 +3,14 @@
 
 # Ada Library Information
 *.ali
+
+# Node & frontend artifacts
+node_modules
+dist
+npm-debug.log*
+
+# Editor directories and environment files
+.DS_Store
+.idea
+.vscode
+.env
