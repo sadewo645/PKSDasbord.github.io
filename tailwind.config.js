@@ -6,6 +6,7 @@ export default {
       colors: {
         'primary-start': '#7b2ff7',
         'primary-end': '#f107a3',
+main
         'sidebar-bg': '#0f172a',
       },
       fontFamily: {

@@ -75,6 +75,7 @@ const App = () => {
         </main>
       </div>
     </div>
+main
   )
 }
 

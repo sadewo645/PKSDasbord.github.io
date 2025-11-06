@@ -63,6 +63,7 @@ const Sidebar = ({ activePage, onChange }) => {
         © {new Date().getFullYear()} Sawit Insight. Semua hak dilindungi.
       </div>
     </aside>
+main
   )
 }
 
